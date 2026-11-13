@@ -32,57 +32,61 @@ Tests, lint and formatting:
 :core:model           plain Kotlin models and venue-time rules
 ```
 
-Features only see `:core:domain`, `:core:model`, `:core:ui` and `:core:designsystem`, never HTTP, JSON or each other. Model, domain, network and data are plain JVM modules, so most logic is tested without a device. Shared Gradle setup lives in `build-logic` convention plugins.
+I split the app into feature and core modules so each screen only depends on what it actually needs. Features can see the domain, models, shared UI and the design system, but never HTTP, JSON or each other. Model, domain, network and data are plain JVM modules, which means most of the logic can be tested without an emulator. The shared Gradle setup lives in `build-logic` convention plugins, so each module's build file stays short.
 
 ### State and navigation
 
-Each screen has an immutable state `StateFlow` and a typed action interface: state flows down, actions flow up. Loading, refreshing and errors share one `ScreenState` type, so every screen keeps showing its content during a refresh or after a failed one.
+Every screen follows the same pattern: the ViewModel exposes one immutable state, and the screen sends typed actions back. Loading, refreshing and errors all use a single `ScreenState` type. That way, if a refresh fails, you keep seeing what was already on screen instead of getting kicked to an error page.
 
-Navigation 3 uses typed, serializable destinations. Club and class IDs travel in the back-stack key and reach the ViewModel through Hilt assisted injection, so a ViewModel always has its arguments from creation. Signing out replaces the whole back stack, so nothing from the previous account survives.
+For navigation I went with Navigation 3 and typed destinations. The club or class ID lives in the back-stack key and is handed to the ViewModel through Hilt assisted injection, so a ViewModel never exists without the data it needs. When someone signs out, the whole back stack is replaced, so nothing from the previous account hangs around.
 
 ### Networking and auth
 
-- The token is attached automatically, only to our API's protected endpoints, never to login, refresh or other hosts.
-- Tokens are refreshed 30 seconds before they expire, based on `expiresIn`. A 401 triggers one refresh and replay as a fallback.
-- Concurrent requests share a single refresh. A rejected refresh signs the user out; a temporary server failure keeps the session.
-- Sign-out cancels in-flight requests first, so a late response can't land under the next account.
-- Repositories return `Result.Success` or `Result.Failure` instead of throwing. Failures carry a reason, message and the server's request ID.
-- Reads retry up to twice (500 ms, then 1 s) on network errors, 429 and 5xx. Bookings and cancellations are never retried automatically.
+Token handling was the part I most wanted to get right.
+
+- The access token is added automatically, but only to our own API's protected endpoints. Login, refresh and any other host never see it.
+- The login response tells us when the token expires (`expiresIn`), so the app refreshes it about 30 seconds early instead of waiting for a 401. If a 401 does come back, it refreshes once and replays the request.
+- If several requests need a refresh at the same time, only one refresh actually happens. If the server rejects the refresh token, the user is signed out; if it's just a temporary server error, the session is kept.
+- Signing out cancels anything still in flight first, so a slow response can't show up under the next person's account.
+- Repositories return `Result.Success` or `Result.Failure` rather than throwing. A failure carries a reason, a message and the server's request ID, which is handy for support.
+- Reads are retried up to twice (after 500 ms, then 1 s) on network errors, 429s and 5xx. Bookings and cancellations are never retried automatically, because I didn't want to risk booking someone twice.
 
 ### Defensive parsing
 
-- Home blocks are decoded by their `type`. Unknown or malformed blocks are dropped without affecting the rest of the page, so new server features don't break the app.
-- Timetable dates and times are parsed in the data layer. Bad classes or days are dropped; an unreadable week shows a retryable error.
-- Unknown booking statuses map to `UNKNOWN`, never to "not booked".
+The home screen is driven by the server, so I assumed the payload would change over time.
 
-## API observations
+- Home blocks are decoded by their `type`. Anything unknown or malformed is skipped, and the rest of the page still renders.
+- Timetable dates and times are parsed in the data layer. A bad class or day is dropped; if the week itself can't be read, the screen shows an error with a retry rather than crashing.
+- A booking status I don't recognise becomes `UNKNOWN`. It's never treated as "not booked", so the app won't offer to book a class someone may already be in.
 
-- **Venue time:** times are shown exactly as the API sends them, in the club's timezone. The server's `selectedDate` picks the initial day, so Cape Town and London can start on different days.
-- **Sorting:** timetable classes aren't consistently sorted or unique. The client sorts by start time and removes duplicates.
-- **No class-details endpoint:** class details are looked up from the weekly timetable.
-- **Class IDs:** they contain `::` and a date, and are encoded as a single path segment.
-- **Booking vs waitlist:** the same endpoint handles both. The response decides which one happened, because a class can fill up between viewing and confirming.
-- **Timed-out bookings:** a booking can time out after the server has already saved it. The app refreshes the class status before allowing another attempt, and blocks double taps.
-- **Late cancellation:** within 12 hours of the start, the app warns about forfeiting the cost; the API doesn't enforce this. Cancellation returns an empty 204.
-- **User in the login response:** it's reused, which saves a `/me` call.
-- **`imageRef`:** these values are asset keys, not URLs, so the UI uses text cards.
-- **Latency:** the API is deliberately slow and sometimes fails. Every screen has loading, retry and pull-to-refresh states.
-- **Calendar reminder:** the reminder opens the calendar app pre-filled with the class. The user saves it there, and the app doesn't claim it was saved.
+## Things I noticed about the API
+
+- **Times are venue times.** I show them exactly as the API sends them, without converting to the phone's timezone. The server's `selectedDate` decides which day opens first, so a Cape Town club and a London club can open on different days at the same moment.
+- **The timetable isn't always sorted, and can contain duplicates.** The app sorts classes by start time and removes duplicates.
+- **There's no class-details endpoint.** I look the class up in the weekly timetable instead.
+- **Class IDs contain `::` and a date.** They have to be encoded as a single path segment, or the URL breaks.
+- **Booking and joining the waitlist use the same endpoint.** A class can fill up between viewing it and confirming, so I let the response decide which one actually happened.
+- **A booking can time out after the server has already saved it.** After a failed attempt, the app refreshes the class before allowing another try, and double taps are blocked.
+- **Late cancellation isn't enforced by the API.** The app warns the user if they cancel within 12 hours of the start. Cancelling returns an empty 204.
+- **The login response already includes the user**, so I reuse it and skip an extra `/me` call.
+- **`imageRef` values are asset keys, not URLs.** I used text cards rather than guessing at image locations.
+- **The API is deliberately slow and sometimes fails**, so every screen has loading, retry and pull-to-refresh states.
+- **The reminder opens the calendar app** pre-filled with the class. The user saves it there, so the app never claims the event was saved.
 
 ## Testing
 
-73 unit tests cover token refresh (concurrent, rejected, transient, proactive, sign-out mid-refresh), read retries, error mapping, malformed payloads, venue time and the 12-hour boundary, booking rules, duplicate taps and the screen ViewModels. Network tests use MockWebServer and don't need the mock API running. The app was also checked by hand on an emulator and a physical device with both accounts.
+There are 73 unit tests. The ones I care most about cover token refresh (concurrent, rejected, temporary failure, early refresh, signing out mid-refresh), read retries, error mapping, malformed payloads, venue time and the 12-hour cancellation boundary. There are also tests for the booking rules, double taps and each screen's ViewModel. The network tests use MockWebServer, so they don't need the mock API running. I also went through the app by hand on an emulator with both accounts, and on my own phone.
 
-## Next steps
+## What I'd do next
 
-- Keep users signed in with Keystore-backed token storage (tokens are currently held in memory only).
-- Move UI strings to resources, and test TalkBack, large fonts and tablet layouts.
-- Add UI and navigation instrumentation tests, plus CI.
-- Agree an idempotent booking API with the backend, and a source for `imageRef` assets.
-- Add telemetry for dropped or malformed server content.
+- Keep people signed in between launches using Keystore-backed token storage. Right now tokens only live in memory, so you sign in again after the app is killed.
+- Move UI strings into resources, and properly test TalkBack, large fonts and tablet layouts.
+- Add UI and navigation instrumentation tests, and set up CI.
+- Talk to the backend team about an idempotent booking endpoint, and where the `imageRef` assets should come from.
+- Add telemetry for server content the app had to skip, so we'd know when the payload changes.
 
 ## AI usage
 
-- **Where:** I used Claude Code as a pair programmer, mainly to review each module against the brief, implement the fixes I approved, and run the app on a device.
-- **Accepted vs rejected:** I treated its suggestions as proposals. I kept what served the brief (token refresh, error handling, defensive parsing) and cut what didn't: extra abstraction, unused fields and comments, an over-long README.
+- **Where:** I used Claude Code as a pair programmer, mostly to review each module against the brief, implement the fixes I agreed with, and run the app on my phone.
+- **What I kept and what I cut:** I treated its suggestions as proposals, not answers. I kept what served the brief (token refresh, error handling, defensive parsing) and cut what didn't: extra abstraction, unused fields and comments, and a README that had grown far too long.
 - **With more time:** persistent sessions, instrumentation tests with CI, and an idempotent booking API.
