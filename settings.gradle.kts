@@ -22,4 +22,5 @@ include(
     ":core:domain",
     ":core:network",
     ":core:data",
-    ":core:designsystem")
+    ":core:designsystem",
+    ":core:ui")
