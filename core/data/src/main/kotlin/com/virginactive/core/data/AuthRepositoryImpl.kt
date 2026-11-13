@@ -2,7 +2,7 @@ package com.virginactive.core.data
 
 import com.virginactive.core.domain.repositories.AuthRepository
 import com.virginactive.core.network.NetworkDataSource
-import com.virginactive.core.network.TokenStore
+import com.virginactive.core.network.auth.TokenStore
 import javax.inject.Inject
 import javax.inject.Qualifier
 import kotlinx.coroutines.CoroutineDispatcher

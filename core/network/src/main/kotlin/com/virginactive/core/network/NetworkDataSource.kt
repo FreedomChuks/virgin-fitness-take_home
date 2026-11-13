@@ -1,5 +1,6 @@
 package com.virginactive.core.network
 
+import com.virginactive.core.network.auth.*
 import com.virginactive.core.network.dto.*
 import java.time.Clock
 import kotlinx.serialization.SerializationException

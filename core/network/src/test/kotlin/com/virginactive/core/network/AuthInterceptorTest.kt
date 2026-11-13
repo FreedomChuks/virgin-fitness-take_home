@@ -1,5 +1,6 @@
 package com.virginactive.core.network
 
+import com.virginactive.core.network.auth.*
 import java.time.Clock
 import java.time.Instant
 import java.time.ZoneOffset

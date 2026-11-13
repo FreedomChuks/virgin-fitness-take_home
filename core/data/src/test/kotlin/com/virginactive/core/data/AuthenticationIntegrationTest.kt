@@ -2,6 +2,7 @@ package com.virginactive.core.data
 
 import com.virginactive.core.domain.Result
 import com.virginactive.core.network.*
+import com.virginactive.core.network.auth.*
 import java.util.concurrent.atomic.AtomicInteger
 import kotlinx.coroutines.*
 import kotlinx.serialization.json.Json

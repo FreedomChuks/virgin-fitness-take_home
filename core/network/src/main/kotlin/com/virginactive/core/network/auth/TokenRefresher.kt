@@ -1,5 +1,6 @@
-package com.virginactive.core.network
+package com.virginactive.core.network.auth
 
+import com.virginactive.core.network.ServerResponseException
 import com.virginactive.core.network.dto.RefreshRequest
 import com.virginactive.core.network.dto.TokenResponse
 import java.io.IOException

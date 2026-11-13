@@ -1,4 +1,4 @@
-package com.virginactive.core.network
+package com.virginactive.core.network.auth
 
 import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaType

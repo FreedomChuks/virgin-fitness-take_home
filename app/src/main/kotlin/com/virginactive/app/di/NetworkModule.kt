@@ -3,7 +3,7 @@ package com.virginactive.app.di
 import com.virginactive.app.BuildConfig
 import com.virginactive.core.data.IoDispatcher
 import com.virginactive.core.network.NetworkDataSource
-import com.virginactive.core.network.TokenStore
+import com.virginactive.core.network.auth.TokenStore
 import com.virginactive.core.network.createHttpClient
 import dagger.Module
 import dagger.Provides

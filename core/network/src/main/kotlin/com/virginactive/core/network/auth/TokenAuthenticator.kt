@@ -1,4 +1,4 @@
-package com.virginactive.core.network
+package com.virginactive.core.network.auth
 
 import okhttp3.Authenticator
 import okhttp3.HttpUrl
