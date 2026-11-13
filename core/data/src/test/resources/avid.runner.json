@@ -1,0 +1,458 @@
+{
+  "/me": {
+    "id": "user_001",
+    "firstName": "Avid",
+    "lastName": "Runner",
+    "email": "avid.runner@virginactive.mock",
+    "membershipTier": "premium",
+    "homeClub": {
+      "id": "club_sea_point",
+      "name": "Virgin Active Sea Point"
+    }
+  },
+  "/home/manifest": {
+    "blocks": [
+      {
+        "type": "greeting",
+        "title": "Good morning, Avid"
+      },
+      {
+        "type": "hero",
+        "title": "Crush your goals this week",
+        "subtitle": "You've attended 3 classes \u2014 1 more to hit your weekly target."
+      },
+      {
+        "type": "myClub",
+        "name": "Virgin Active Sea Point",
+        "addressLine": "96 Beach Rd, Sea Point, Cape Town, 8005",
+        "openingHoursToday": "05:00 \u2013 22:00",
+        "phoneNumber": "+27 21 439 1240"
+      },
+      {
+        "type": "classCarousel",
+        "title": "Your week",
+        "viewAllAction": {
+          "type": "openTimetable",
+          "clubId": "club_sea_point"
+        },
+        "items": [
+          {
+            "id": "sp-power-spin::2026-11-09",
+            "title": "Power Spin",
+            "subtitle": "Thabo Ndlovu",
+            "imageRef": "spin",
+            "badge": "Booked",
+            "startsAt": "2026-11-09T06:00:00+02:00",
+            "actionLabel": "View",
+            "actionRef": {
+              "type": "openClass",
+              "clubId": "club_sea_point",
+              "classId": "sp-power-spin::2026-11-09"
+            }
+          },
+          {
+            "id": "sp-sunrise-yoga::2026-11-09",
+            "title": "Sunrise Yoga",
+            "subtitle": "Lerato Molefe",
+            "imageRef": "yoga",
+            "badge": "Booked",
+            "startsAt": "2026-11-09T07:00:00+02:00",
+            "actionLabel": "View",
+            "actionRef": {
+              "type": "openClass",
+              "clubId": "club_sea_point",
+              "classId": "sp-sunrise-yoga::2026-11-09"
+            }
+          },
+          {
+            "id": "sp-hiit-lab::2026-11-09",
+            "title": "HIIT Lab",
+            "subtitle": "Sipho Dlamini",
+            "imageRef": "hiit",
+            "badge": "Waitlisted",
+            "startsAt": "2026-11-09T17:30:00+02:00",
+            "actionLabel": "View",
+            "actionRef": {
+              "type": "openClass",
+              "clubId": "club_sea_point",
+              "classId": "sp-hiit-lab::2026-11-09"
+            }
+          },
+          {
+            "id": "sp-rpm-spin::2026-11-13",
+            "title": "RPM Spin",
+            "subtitle": "Thabo Ndlovu",
+            "imageRef": "spin",
+            "startsAt": "2026-11-13T17:30:00+02:00",
+            "actionLabel": "View",
+            "actionRef": {
+              "type": "openClass",
+              "clubId": "club_sea_point",
+              "classId": "sp-rpm-spin::2026-11-13"
+            }
+          },
+          {
+            "id": "sp-lane-swim::2026-11-14",
+            "title": "Lane Swim",
+            "subtitle": "Naledi Botha",
+            "imageRef": "swimming",
+            "startsAt": "2026-11-14T07:00:00+02:00",
+            "actionLabel": "View",
+            "actionRef": {
+              "type": "openClass",
+              "clubId": "club_sea_point",
+              "classId": "sp-lane-swim::2026-11-14"
+            }
+          },
+          {
+            "id": "sp-strength-tone::2026-11-15",
+            "title": "Strength & Tone",
+            "subtitle": "Andile Mkhize",
+            "imageRef": "groupWorkout",
+            "startsAt": "2026-11-15T08:00:00+02:00",
+            "actionLabel": "View",
+            "actionRef": {
+              "type": "openClass",
+              "clubId": "club_sea_point",
+              "classId": "sp-strength-tone::2026-11-15"
+            }
+          }
+        ]
+      },
+      {
+        "type": "myRewards",
+        "title": "Your rewards",
+        "items": [
+          {
+            "id": "reward_001",
+            "title": "Free smoothie at the juice bar",
+            "subtitle": "Show this at any Virgin Active caf\u00e9",
+            "imageRef": "reward_smoothie",
+            "badge": "Expires Sunday"
+          },
+          {
+            "id": "reward_002",
+            "title": "20% off retail at any club",
+            "subtitle": "Valid on apparel and accessories",
+            "imageRef": "reward_retail"
+          },
+          {
+            "id": "reward_003",
+            "title": "Bring a friend free this month",
+            "subtitle": "One guest pass, any location",
+            "imageRef": "reward_guest",
+            "badge": "Limited time"
+          }
+        ]
+      },
+      {
+        "type": "myGoals",
+        "title": "Your goals",
+        "items": [
+          {
+            "id": "goal_001",
+            "title": "Attend 4 classes per week",
+            "subtitle": "3 of 4 this week",
+            "imageRef": "goal_classes"
+          },
+          {
+            "id": "goal_002",
+            "title": "Complete 10 spin classes this month",
+            "subtitle": "7 of 10 completed",
+            "imageRef": "goal_spin"
+          },
+          {
+            "id": "goal_003",
+            "title": "Try a new class type",
+            "subtitle": "You haven't tried Pilates yet!",
+            "imageRef": "goal_explore"
+          }
+        ]
+      },
+      {
+        "type": "promotion",
+        "title": "Summer Shape-Up Challenge",
+        "subtitle": "Join 12 classes in 4 weeks and earn bonus rewards. Starts 1 June.",
+        "imageRef": "promo_summer_challenge"
+      },
+      {
+        "type": "experimental",
+        "payload": {
+          "kind": "futureFeature",
+          "title": "Coming soon",
+          "data": {
+            "foo": "bar"
+          }
+        }
+      }
+    ]
+  },
+  "/clubs/club_sea_point/classes/timetable": {
+    "clubId": "club_sea_point",
+    "weekStart": "2026-11-09",
+    "weekEnd": "2026-11-15",
+    "selectedDate": "2026-11-13",
+    "days": [
+      {
+        "date": "2026-11-09",
+        "classes": [
+          {
+            "classId": "sp-hiit-lab::2026-11-09",
+            "clubId": "club_sea_point",
+            "title": "HIIT Lab",
+            "trainer": "Sipho Dlamini",
+            "type": "hiit",
+            "startsAt": "2026-11-09T17:30:00+02:00",
+            "endsAt": "2026-11-09T18:00:00+02:00",
+            "timezone": "Africa/Johannesburg",
+            "spots": 12,
+            "available": 0,
+            "waitlistCount": 1,
+            "status": "full",
+            "userBookingStatus": "waitlisted"
+          },
+          {
+            "classId": "sp-sunrise-yoga::2026-11-09",
+            "clubId": "club_sea_point",
+            "title": "Sunrise Yoga",
+            "trainer": "Lerato Molefe",
+            "type": "yoga",
+            "startsAt": "2026-11-09T07:00:00+02:00",
+            "endsAt": "2026-11-09T08:00:00+02:00",
+            "timezone": "Africa/Johannesburg",
+            "spots": 20,
+            "available": 19,
+            "waitlistCount": 0,
+            "status": "available",
+            "userBookingStatus": "booked"
+          },
+          {
+            "classId": "sp-power-spin::2026-11-09",
+            "clubId": "club_sea_point",
+            "title": "Power Spin",
+            "trainer": "Thabo Ndlovu",
+            "type": "spin",
+            "startsAt": "2026-11-09T06:00:00+02:00",
+            "endsAt": "2026-11-09T06:45:00+02:00",
+            "timezone": "Africa/Johannesburg",
+            "spots": 18,
+            "available": 17,
+            "waitlistCount": 0,
+            "status": "available",
+            "userBookingStatus": "booked"
+          }
+        ]
+      },
+      {
+        "date": "2026-11-10",
+        "classes": [
+          {
+            "classId": "sp-pilates-core::2026-11-10",
+            "clubId": "club_sea_point",
+            "title": "Pilates Core",
+            "trainer": "Zanele Khumalo",
+            "type": "pilates",
+            "startsAt": "2026-11-10T08:00:00+02:00",
+            "endsAt": "2026-11-10T08:45:00+02:00",
+            "timezone": "Africa/Johannesburg",
+            "spots": 15,
+            "available": 3,
+            "waitlistCount": 0,
+            "status": "available",
+            "userBookingStatus": "none"
+          },
+          {
+            "classId": "sp-aqua-lanes::2026-11-10",
+            "clubId": "club_sea_point",
+            "title": "Aqua Lanes",
+            "trainer": "Naledi Botha",
+            "type": "swimming",
+            "startsAt": "2026-11-10T06:30:00+02:00",
+            "endsAt": "2026-11-10T07:15:00+02:00",
+            "timezone": "Africa/Johannesburg",
+            "spots": 25,
+            "available": 3,
+            "waitlistCount": 0,
+            "status": "available",
+            "userBookingStatus": "none"
+          }
+        ]
+      },
+      {
+        "date": "2026-11-11",
+        "classes": [
+          {
+            "classId": "sp-evening-flow::2026-11-11",
+            "clubId": "club_sea_point",
+            "title": "Evening Flow Yoga",
+            "trainer": "Lerato Molefe",
+            "type": "yoga",
+            "startsAt": "2026-11-11T17:00:00+02:00",
+            "endsAt": "2026-11-11T18:00:00+02:00",
+            "timezone": "Africa/Johannesburg",
+            "spots": 20,
+            "available": 20,
+            "waitlistCount": 0,
+            "status": "available",
+            "userBookingStatus": "none"
+          },
+          {
+            "classId": "sp-lunchtime-spin::2026-11-11",
+            "clubId": "club_sea_point",
+            "title": "Lunchtime Spin",
+            "trainer": "Thabo Ndlovu",
+            "type": "spin",
+            "startsAt": "2026-11-11T12:00:00+02:00",
+            "endsAt": "2026-11-11T12:45:00+02:00",
+            "timezone": "Africa/Johannesburg",
+            "spots": 18,
+            "available": 2,
+            "waitlistCount": 0,
+            "status": "available",
+            "userBookingStatus": "none"
+          }
+        ]
+      },
+      {
+        "date": "2026-11-12",
+        "classes": [
+          {
+            "classId": "sp-group-power::2026-11-12",
+            "clubId": "club_sea_point",
+            "title": "Group Power",
+            "trainer": "Andile Mkhize",
+            "type": "groupWorkout",
+            "startsAt": "2026-11-12T12:00:00+02:00",
+            "endsAt": "2026-11-12T12:45:00+02:00",
+            "timezone": "Africa/Johannesburg",
+            "spots": 20,
+            "available": 20,
+            "waitlistCount": 0,
+            "status": "available",
+            "userBookingStatus": "none"
+          },
+          {
+            "classId": "sp-total-body-hiit::2026-11-12",
+            "clubId": "club_sea_point",
+            "title": "Total Body HIIT",
+            "trainer": "Sipho Dlamini",
+            "type": "hiit",
+            "startsAt": "2026-11-12T06:00:00+02:00",
+            "endsAt": "2026-11-12T06:30:00+02:00",
+            "timezone": "Africa/Johannesburg",
+            "spots": 12,
+            "available": 12,
+            "waitlistCount": 0,
+            "status": "available",
+            "userBookingStatus": "none"
+          }
+        ]
+      },
+      {
+        "date": "2026-11-13",
+        "classes": [
+          {
+            "classId": "sp-rpm-spin::2026-11-13",
+            "clubId": "club_sea_point",
+            "title": "RPM Spin",
+            "trainer": "Thabo Ndlovu",
+            "type": "spin",
+            "startsAt": "2026-11-13T17:30:00+02:00",
+            "endsAt": "2026-11-13T18:15:00+02:00",
+            "timezone": "Africa/Johannesburg",
+            "spots": 18,
+            "available": 18,
+            "waitlistCount": 0,
+            "status": "available",
+            "userBookingStatus": "none"
+          },
+          {
+            "classId": "sp-deep-stretch::2026-11-13",
+            "clubId": "club_sea_point",
+            "title": "Deep Stretch Yoga",
+            "trainer": "Lerato Molefe",
+            "type": "yoga",
+            "startsAt": "2026-11-13T07:00:00+02:00",
+            "endsAt": "2026-11-13T08:00:00+02:00",
+            "timezone": "Africa/Johannesburg",
+            "spots": 20,
+            "available": 0,
+            "waitlistCount": 0,
+            "status": "full",
+            "userBookingStatus": "none"
+          }
+        ]
+      },
+      {
+        "date": "2026-11-14",
+        "classes": [
+          {
+            "classId": "sp-weekend-warrior::2026-11-14",
+            "clubId": "club_sea_point",
+            "title": "Weekend Warrior HIIT",
+            "trainer": "Sipho Dlamini",
+            "type": "hiit",
+            "startsAt": "2026-11-14T09:00:00+02:00",
+            "endsAt": "2026-11-14T09:30:00+02:00",
+            "timezone": "Africa/Johannesburg",
+            "spots": 12,
+            "available": 0,
+            "waitlistCount": 0,
+            "status": "full",
+            "userBookingStatus": "none"
+          },
+          {
+            "classId": "sp-lane-swim::2026-11-14",
+            "clubId": "club_sea_point",
+            "title": "Lane Swim",
+            "trainer": "Naledi Botha",
+            "type": "swimming",
+            "startsAt": "2026-11-14T07:00:00+02:00",
+            "endsAt": "2026-11-14T08:00:00+02:00",
+            "timezone": "Africa/Johannesburg",
+            "spots": 25,
+            "available": 25,
+            "waitlistCount": 0,
+            "status": "available",
+            "userBookingStatus": "none"
+          }
+        ]
+      },
+      {
+        "date": "2026-11-15",
+        "classes": [
+          {
+            "classId": "sp-restorative-yoga::2026-11-15",
+            "clubId": "club_sea_point",
+            "title": "Restorative Yoga",
+            "trainer": "Lerato Molefe",
+            "type": "yoga",
+            "startsAt": "2026-11-15T10:00:00+02:00",
+            "endsAt": "2026-11-15T11:00:00+02:00",
+            "timezone": "Africa/Johannesburg",
+            "spots": 20,
+            "available": 20,
+            "waitlistCount": 0,
+            "status": "available",
+            "userBookingStatus": "none"
+          },
+          {
+            "classId": "sp-strength-tone::2026-11-15",
+            "clubId": "club_sea_point",
+            "title": "Strength & Tone",
+            "trainer": "Andile Mkhize",
+            "type": "groupWorkout",
+            "startsAt": "2026-11-15T08:00:00+02:00",
+            "endsAt": "2026-11-15T08:45:00+02:00",
+            "timezone": "Africa/Johannesburg",
+            "spots": 20,
+            "available": 20,
+            "waitlistCount": 0,
+            "status": "available",
+            "userBookingStatus": "none"
+          }
+        ]
+      }
+    ]
+  }
+}

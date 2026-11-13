@@ -1,0 +1,402 @@
+{
+  "/me": {
+    "id": "user_002",
+    "firstName": "Competitive",
+    "lastName": "Swimmer",
+    "email": "competitive.swimmer@virginactive.mock",
+    "membershipTier": "essential",
+    "homeClub": {
+      "id": "club_aldersgate",
+      "name": "Virgin Active Aldersgate"
+    }
+  },
+  "/home/manifest": {
+    "blocks": [
+      {
+        "type": "greeting",
+        "title": "Welcome, Competitive"
+      },
+      {
+        "type": "hero",
+        "title": "Your fitness journey starts here",
+        "subtitle": "Explore classes at your club and book your first session."
+      },
+      {
+        "type": "myClub",
+        "name": "Virgin Active Aldersgate",
+        "addressLine": "1 Aldersgate St, Barbican, London EC1A 4JQ",
+        "openingHoursToday": "06:30 \u2013 22:00",
+        "phoneNumber": "+44 20 7600 5130"
+      },
+      {
+        "type": "promotion",
+        "title": "Welcome to Virgin Active",
+        "subtitle": "Your first month bonus \u2014 attend 3 classes and unlock a free guest pass.",
+        "imageRef": "promo_welcome_bonus"
+      },
+      {
+        "type": "classCarousel",
+        "title": "Your week",
+        "viewAllAction": {
+          "type": "openTimetable",
+          "clubId": "club_aldersgate"
+        },
+        "items": [
+          {
+            "id": "ag-hiit-circuit::2026-11-13",
+            "title": "HIIT Circuit",
+            "subtitle": "Marcus Campbell",
+            "imageRef": "hiit",
+            "startsAt": "2026-11-13T06:30:00Z",
+            "actionLabel": "View",
+            "actionRef": {
+              "type": "openClass",
+              "clubId": "club_aldersgate",
+              "classId": "ag-hiit-circuit::2026-11-13"
+            }
+          },
+          {
+            "id": "ag-friday-flow::2026-11-13",
+            "title": "Friday Flow",
+            "subtitle": "Emily Hartwell",
+            "imageRef": "yoga",
+            "startsAt": "2026-11-13T17:00:00Z",
+            "actionLabel": "View",
+            "actionRef": {
+              "type": "openClass",
+              "clubId": "club_aldersgate",
+              "classId": "ag-friday-flow::2026-11-13"
+            }
+          },
+          {
+            "id": "ag-endurance-spin::2026-11-14",
+            "title": "Endurance Spin",
+            "subtitle": "James Fletcher",
+            "imageRef": "spin",
+            "startsAt": "2026-11-14T08:00:00Z",
+            "actionLabel": "View",
+            "actionRef": {
+              "type": "openClass",
+              "clubId": "club_aldersgate",
+              "classId": "ag-endurance-spin::2026-11-14"
+            }
+          },
+          {
+            "id": "ag-open-water-swim::2026-11-14",
+            "title": "Open Water Swim",
+            "subtitle": "Oliver Brooks",
+            "imageRef": "swimming",
+            "startsAt": "2026-11-14T09:00:00Z",
+            "actionLabel": "View",
+            "actionRef": {
+              "type": "openClass",
+              "clubId": "club_aldersgate",
+              "classId": "ag-open-water-swim::2026-11-14"
+            }
+          },
+          {
+            "id": "ag-yoga-restore::2026-11-15",
+            "title": "Yoga Restore",
+            "subtitle": "Emily Hartwell",
+            "imageRef": "yoga",
+            "startsAt": "2026-11-15T09:00:00Z",
+            "actionLabel": "View",
+            "actionRef": {
+              "type": "openClass",
+              "clubId": "club_aldersgate",
+              "classId": "ag-yoga-restore::2026-11-15"
+            }
+          }
+        ]
+      },
+      {
+        "type": "myGoals",
+        "title": "Your goals",
+        "items": [
+          {
+            "id": "goal_get_started",
+            "title": "Set your first goal"
+          }
+        ]
+      },
+      {
+        "type": "experimental",
+        "payload": {
+          "kind": "futureFeature",
+          "title": "Coming soon",
+          "data": {
+            "foo": "bar"
+          }
+        }
+      }
+    ]
+  },
+  "/clubs/club_aldersgate/classes/timetable": {
+    "clubId": "club_aldersgate",
+    "weekStart": "2026-11-09",
+    "weekEnd": "2026-11-15",
+    "selectedDate": "2026-11-12",
+    "days": [
+      {
+        "date": "2026-11-09",
+        "classes": [
+          {
+            "classId": "ag-vinyasa-flow::2026-11-09",
+            "clubId": "club_aldersgate",
+            "title": "Vinyasa Flow",
+            "trainer": "Emily Hartwell",
+            "type": "yoga",
+            "startsAt": "2026-11-09T08:00:00Z",
+            "endsAt": "2026-11-09T09:00:00Z",
+            "timezone": "Europe/London",
+            "spots": 20,
+            "available": 2,
+            "waitlistCount": 0,
+            "status": "available",
+            "userBookingStatus": "none"
+          },
+          {
+            "classId": "ag-express-hiit::2026-11-09",
+            "clubId": "club_aldersgate",
+            "title": "Express HIIT",
+            "trainer": "Marcus Campbell",
+            "type": "hiit",
+            "startsAt": "2026-11-09T12:30:00Z",
+            "endsAt": "2026-11-09T13:00:00Z",
+            "timezone": "Europe/London",
+            "spots": 12,
+            "available": 12,
+            "waitlistCount": 0,
+            "status": "available",
+            "userBookingStatus": "none"
+          },
+          {
+            "classId": "ag-morning-spin::2026-11-09",
+            "clubId": "club_aldersgate",
+            "title": "Morning Spin",
+            "trainer": "James Fletcher",
+            "type": "spin",
+            "startsAt": "2026-11-09T07:00:00Z",
+            "endsAt": "2026-11-09T07:45:00Z",
+            "timezone": "Europe/London",
+            "spots": 18,
+            "available": 18,
+            "waitlistCount": 0,
+            "status": "available",
+            "userBookingStatus": "none"
+          }
+        ]
+      },
+      {
+        "date": "2026-11-10",
+        "classes": [
+          {
+            "classId": "ag-reformer-pilates::2026-11-10",
+            "clubId": "club_aldersgate",
+            "title": "Reformer Pilates",
+            "trainer": "Charlotte Webb",
+            "type": "pilates",
+            "startsAt": "2026-11-10T07:00:00Z",
+            "endsAt": "2026-11-10T07:45:00Z",
+            "timezone": "Europe/London",
+            "spots": 15,
+            "available": 2,
+            "waitlistCount": 0,
+            "status": "available",
+            "userBookingStatus": "none"
+          },
+          {
+            "classId": "ag-lane-swimming::2026-11-10",
+            "clubId": "club_aldersgate",
+            "title": "Lane Swimming",
+            "trainer": "Oliver Brooks",
+            "type": "swimming",
+            "startsAt": "2026-11-10T06:30:00Z",
+            "endsAt": "2026-11-10T07:30:00Z",
+            "timezone": "Europe/London",
+            "spots": 25,
+            "available": 25,
+            "waitlistCount": 0,
+            "status": "available",
+            "userBookingStatus": "none"
+          }
+        ]
+      },
+      {
+        "date": "2026-11-11",
+        "classes": [
+          {
+            "classId": "ag-spin-burn::2026-11-11",
+            "clubId": "club_aldersgate",
+            "title": "Spin & Burn",
+            "trainer": "James Fletcher",
+            "type": "spin",
+            "startsAt": "2026-11-11T17:30:00Z",
+            "endsAt": "2026-11-11T18:15:00Z",
+            "timezone": "Europe/London",
+            "spots": 18,
+            "available": 18,
+            "waitlistCount": 0,
+            "status": "available",
+            "userBookingStatus": "none"
+          },
+          {
+            "classId": "ag-power-yoga::2026-11-11",
+            "clubId": "club_aldersgate",
+            "title": "Power Yoga",
+            "trainer": "Emily Hartwell",
+            "type": "yoga",
+            "startsAt": "2026-11-11T07:00:00Z",
+            "endsAt": "2026-11-11T08:00:00Z",
+            "timezone": "Europe/London",
+            "spots": 20,
+            "available": 0,
+            "waitlistCount": 0,
+            "status": "full",
+            "userBookingStatus": "none"
+          }
+        ]
+      },
+      {
+        "date": "2026-11-12",
+        "classes": [
+          {
+            "classId": "ag-lunchtime-pilates::2026-11-12",
+            "clubId": "club_aldersgate",
+            "title": "Lunchtime Pilates",
+            "trainer": "Charlotte Webb",
+            "type": "pilates",
+            "startsAt": "2026-11-12T12:00:00Z",
+            "endsAt": "2026-11-12T12:45:00Z",
+            "timezone": "Europe/London",
+            "spots": 15,
+            "available": 15,
+            "waitlistCount": 0,
+            "status": "available",
+            "userBookingStatus": "none"
+          },
+          {
+            "classId": "ag-full-body-blast::2026-11-12",
+            "clubId": "club_aldersgate",
+            "title": "Full Body Blast",
+            "trainer": "Marcus Campbell",
+            "type": "groupWorkout",
+            "startsAt": "2026-11-12T07:00:00Z",
+            "endsAt": "2026-11-12T07:45:00Z",
+            "timezone": "Europe/London",
+            "spots": 20,
+            "available": 0,
+            "waitlistCount": 0,
+            "status": "full",
+            "userBookingStatus": "none"
+          }
+        ]
+      },
+      {
+        "date": "2026-11-13",
+        "classes": [
+          {
+            "classId": "ag-hiit-circuit::2026-11-13",
+            "clubId": "club_aldersgate",
+            "title": "HIIT Circuit",
+            "trainer": "Marcus Campbell",
+            "type": "hiit",
+            "startsAt": "2026-11-13T06:30:00Z",
+            "endsAt": "2026-11-13T07:00:00Z",
+            "timezone": "Europe/London",
+            "spots": 12,
+            "available": 12,
+            "waitlistCount": 0,
+            "status": "available",
+            "userBookingStatus": "none"
+          },
+          {
+            "classId": "ag-friday-flow::2026-11-13",
+            "clubId": "club_aldersgate",
+            "title": "Friday Flow",
+            "trainer": "Emily Hartwell",
+            "type": "yoga",
+            "startsAt": "2026-11-13T17:00:00Z",
+            "endsAt": "2026-11-13T18:00:00Z",
+            "timezone": "Europe/London",
+            "spots": 20,
+            "available": 6,
+            "waitlistCount": 0,
+            "status": "available",
+            "userBookingStatus": "none"
+          }
+        ]
+      },
+      {
+        "date": "2026-11-14",
+        "classes": [
+          {
+            "classId": "ag-endurance-spin::2026-11-14",
+            "clubId": "club_aldersgate",
+            "title": "Endurance Spin",
+            "trainer": "James Fletcher",
+            "type": "spin",
+            "startsAt": "2026-11-14T08:00:00Z",
+            "endsAt": "2026-11-14T08:45:00Z",
+            "timezone": "Europe/London",
+            "spots": 18,
+            "available": 18,
+            "waitlistCount": 0,
+            "status": "available",
+            "userBookingStatus": "none"
+          },
+          {
+            "classId": "ag-open-water-swim::2026-11-14",
+            "clubId": "club_aldersgate",
+            "title": "Open Water Swim",
+            "trainer": "Oliver Brooks",
+            "type": "swimming",
+            "startsAt": "2026-11-14T09:00:00Z",
+            "endsAt": "2026-11-14T10:00:00Z",
+            "timezone": "Europe/London",
+            "spots": 25,
+            "available": 25,
+            "waitlistCount": 0,
+            "status": "available",
+            "userBookingStatus": "none"
+          }
+        ]
+      },
+      {
+        "date": "2026-11-15",
+        "classes": [
+          {
+            "classId": "ag-sunday-strength::2026-11-15",
+            "clubId": "club_aldersgate",
+            "title": "Sunday Strength",
+            "trainer": "Marcus Campbell",
+            "type": "groupWorkout",
+            "startsAt": "2026-11-15T10:00:00Z",
+            "endsAt": "2026-11-15T10:45:00Z",
+            "timezone": "Europe/London",
+            "spots": 20,
+            "available": 20,
+            "waitlistCount": 0,
+            "status": "available",
+            "userBookingStatus": "none"
+          },
+          {
+            "classId": "ag-yoga-restore::2026-11-15",
+            "clubId": "club_aldersgate",
+            "title": "Yoga Restore",
+            "trainer": "Emily Hartwell",
+            "type": "yoga",
+            "startsAt": "2026-11-15T09:00:00Z",
+            "endsAt": "2026-11-15T10:00:00Z",
+            "timezone": "Europe/London",
+            "spots": 20,
+            "available": 20,
+            "waitlistCount": 0,
+            "status": "available",
+            "userBookingStatus": "none"
+          }
+        ]
+      }
+    ]
+  }
+}
