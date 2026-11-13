@@ -19,4 +19,5 @@ rootProject.name = "VirginActive"
 
 include(
     ":core:model",
-    ":core:domain")
+    ":core:domain",
+    ":core:network")
