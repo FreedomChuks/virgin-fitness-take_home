@@ -18,6 +18,7 @@ dependencyResolutionManagement {
 rootProject.name = "VirginActive"
 
 include(
+    ":app",
     ":core:model",
     ":core:domain",
     ":core:network",
