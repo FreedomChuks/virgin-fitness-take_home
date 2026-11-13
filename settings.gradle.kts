@@ -25,4 +25,4 @@ include(
     ":core:designsystem",
     ":core:ui")
 
-include(":features:login")
+include(":features:login", ":features:home")
