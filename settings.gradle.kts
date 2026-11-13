@@ -24,3 +24,5 @@ include(
     ":core:data",
     ":core:designsystem",
     ":core:ui")
+
+include(":features:login")
